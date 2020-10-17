@@ -27,7 +27,7 @@ if [[ $cmd = "up" ]]; then
 	cat docker-compose.yml
 	echo '--------------'
 	
-	docker stack deploy --with-registry-auth --compose-file docker-compose.yml coachme-web 2>&1
+	docker stack deploy --with-registry-auth --compose-file docker-compose.yml coachme-api 2>&1
 else
 	docker-compose --project-name $project_name $cmd -d 2>&1
 fi
