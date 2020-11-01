@@ -5,6 +5,7 @@ services:
     image: #{DOCKER_REGISTRY}/#{Octopus.Action.Package[CoachMeApi].PackageId}:#{Octopus.Action.Package[CoachMeApi].PackageVersion}
     environment:
       - DOTNET_ENVIRONMENT=#{ENVIRONMENT}
+      - GOOGLE_APPLICATION_CREDENTIALS=Oomssport Training-a192e0fcd823.json
     networks:
       - edge
     deploy:
