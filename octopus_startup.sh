@@ -1,6 +1,7 @@
 cmd="up"
 octopus=0
 project_name="Merit"
+deploy_environment="dev"
 while getopts ":n:c:o" opt; do
 	case $opt in
 		o) octopus=1
@@ -8,6 +9,8 @@ while getopts ":n:c:o" opt; do
 		n) project_name="$OPTARG"
 		;;
 		c) cmd="$OPTARG"
+		;;
+		e) deploy_environment="$OPTARG"
 		;;
 		\?) echo "Invalid option -$OPTARG" >&2
 		;;
@@ -27,7 +30,7 @@ if [[ $cmd = "up" ]]; then
 	cat docker-compose.yml
 	echo '--------------'
 	
-	docker stack deploy --with-registry-auth --compose-file docker-compose.yml coachme-api 2>&1
+	docker stack deploy --with-registry-auth --compose-file docker-compose.yml coachme-api-$deploy_environment 2>&1
 else
 	docker-compose --project-name $project_name $cmd -d 2>&1
 fi
