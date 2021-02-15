@@ -2,7 +2,7 @@ cmd="up"
 octopus=0
 project_name="Merit"
 deploy_environment="dev"
-while getopts ":n:c:o" opt; do
+while getopts ":n:c:o:e" opt; do
 	case $opt in
 		o) octopus=1
 		;;
